@@ -1,0 +1,63 @@
+﻿@model MOVIESDB.Models.FilmDetailsObj
+
+@{
+    ViewBag.Title = "FilmAdd";
+}
+
+<h2>FilmAdd</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("FilmAdd","Movie")) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>FilmDetailsObj</legend>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.FilmId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmId)
+            @Html.ValidationMessageFor(model => model.FilmId)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.Label("Actor")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ActorId,ViewData["Actor"] as IEnumerable<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.ActorId)
+        </div>
+
+         
+
+        <div class="editor-label">
+                        @Html.Label("Movie")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.MovieId,ViewData["Movie"] as IEnumerable<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.MovieId)
+        </div>
+
+       
+
+        <div class="editor-label">
+            @Html.Label("Producer")
+        </div>
+        <div class="editor-field">
+              @Html.DropDownListFor(model => model.ProducerId,ViewData["Producer"] as IEnumerable<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.ProducerId)
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Home")
+</div>

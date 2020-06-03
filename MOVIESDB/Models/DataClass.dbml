@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IES_Dev" Class="DataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=INFIONICAPPSRV2\INFIONICDBSRV;Initial Catalog=IES_Dev;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="IES_DevConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Actor" Member="Actors">
+    <Type Name="Actor">
+      <Column Name="ActorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Dob" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Bio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Actor_FilmDetail" Member="FilmDetails" ThisKey="ActorID" OtherKey="ActorId" Type="FilmDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Movie" Member="Movies">
+    <Type Name="Movie">
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="YoR" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Plot" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Movie_FilmDetail" Member="FilmDetails" ThisKey="MovieID" OtherKey="MovieID" Type="FilmDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Producer" Member="Producers">
+    <Type Name="Producer">
+      <Column Name="ProducerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Dob" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Bio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Producer_FilmDetail" Member="FilmDetails" ThisKey="ProducerID" OtherKey="ProducerID" Type="FilmDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FilmDetails" Member="FilmDetails">
+    <Type Name="FilmDetail">
+      <Column Name="FilmId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProducerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Actor_FilmDetail" Member="Actor" ThisKey="ActorId" OtherKey="ActorID" Type="Actor" IsForeignKey="true" />
+      <Association Name="Movie_FilmDetail" Member="Movie" ThisKey="MovieID" OtherKey="MovieID" Type="Movie" IsForeignKey="true" />
+      <Association Name="Producer_FilmDetail" Member="Producer" ThisKey="ProducerID" OtherKey="ProducerID" Type="Producer" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
