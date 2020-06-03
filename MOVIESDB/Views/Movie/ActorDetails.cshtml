@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MOVIESDB.Models.Actor>
+
+@{
+    ViewBag.Title = "ActorDetails";
+}
+
+<h2>ActorDetails</h2>
+
+<p>
+    @Html.ActionLink("Add New Actor", "Actor")
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Sex
+        </th>
+        <th>
+            DOB
+        </th>
+        <th>
+            Bio
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ActorUpdate", new { id=item.ActorID }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

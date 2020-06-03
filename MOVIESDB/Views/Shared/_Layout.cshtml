@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>LayOut</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+</head>
+
+<body>
+    <div>
+
+    <div>
+        <table>
+            <tr>
+                <td><a href="@Url.Action("Home","Movie")">Home</a></td>
+                <td><a href="@Url.Action("ActorDetails","Movie")">Actor</a></td>
+                <td><a href="@Url.Action("MovieDetails","Movie")">Movies</a></td>
+                <td><a href="@Url.Action("ProducerDetails","Movie")">Producers</a></td>
+                <td><a href="#">About</a></td>
+
+
+
+            </tr>
+        </table>
+    </div>
+    <div>@RenderBody()</div>
+         
+
+    </div>
+</body>
+</html>

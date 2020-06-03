@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MOVIESDB.Models.FilmDetailsObj>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Home</h2>
+
+<p>
+    @Html.ActionLink("Add New Film", "FilmAdd")
+</p>
+<table>
+  
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{string filename = item.MovieId.ToString() + ".jpg";}
+       <img src="../../Images/@filename"  height="300" width="300"/>      
+       </td>
+        <td>
+            <table>
+                <tr>
+                <td>Actor :</td>
+                <td>@Html.DisplayFor(modelItem => item.ActorName)</td>
+                </tr>
+                <tr>
+                <td>Movie :</td>
+                <td>@Html.DisplayFor(modelItem => item.MovieName)</td>
+                </tr>
+                 <tr>
+                <td>Producer :</td>
+                <td>@Html.DisplayFor(modelItem => item.ProducerName)</td>
+                </tr>
+                
+
+            </table>
+            
+        </td>
+       
+    </tr>
+}
+
+</table>
